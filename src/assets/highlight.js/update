@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+
+GITREPO="highlight.js"
+GITURL="git://github.com/isagalaev/highlight.js.git"
+
+build-script() {
+  local BUILDFILE=`ls tools/build.*`
+
+  if [[ $BUILDFILE == "tools/build.py" ]]; then
+    local RUN=`which python3`
+  else
+    # Some systems use nodejs as the executable for Node.js. This is to
+    # call either node or nodejs executable depending on what is
+    # available.
+    local RUN=`which nodejs || which node`
+
+    npm install
+  fi
+
+  $RUN $BUILDFILE $*
+}
+
+# Update this repository first, just to be on the safe side
+git fetch origin
+git merge origin/master
+
+if [[ ! -d $GITREPO ]]; then
+  git clone $GITURL $GITREPO --depth 10
+fi
+
+cd $GITREPO
+
+# Grab the latest tagged version
+TAGNAME=`git tag --list | sort --reverse | head -n 1`
+BUILDDIR="../build"
+
+git pull
+git checkout $TAGNAME
+
+rm -rf $BUILDDIR
+
+# Build for CDN
+build-script -t cdn :common
+cp -R build $BUILDDIR
+
+git checkout master
+
+cd ..
+
+git add --all
+git commit -m "Update to version ${TAGNAME}"
+git tag --annotate $TAGNAME -m "Version ${TAGNAME}"
+git push origin
+git push --tags
