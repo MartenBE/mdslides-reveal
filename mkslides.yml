@@ -1,5 +1,7 @@
+index:
+  theme: slides/styles/index.css
 slides:
-  theme: dracula
+  theme: slides/styles/slides.css
 reveal.js:
   height: 1080
   width: 1920

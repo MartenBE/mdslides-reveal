@@ -6,7 +6,7 @@ title: "Would you like to know more?"
 
 Created by [MartenBE](https://github.com/MartenBE)
 
-Hosted on [GitHub](https://github.com/MartenBE/mkslides) and [Pypi](https://pypi.org/project/mkslides/)
+Hosted on [GitHub](https://github.com/MartenBE/mkslides) and [PyPI](https://pypi.org/project/mkslides/)
 
 Inspired by [MkDocs](https://pypi.org/project/mkdocs/) and [reveal-md](https://github.com/webpro/reveal-md)
 
@@ -46,6 +46,7 @@ $ pip install mkslides
 -   Input
     -   Markdown **file**
     -   or **directory** with multiple (nested) Markdown files
+        - This will also generate an index page like [this](./index.html)
 -   Output
     -   Folder with static HTML slides
         -   Includes an index.html page with links to each slideshow when the input was a directory
@@ -54,6 +55,42 @@ $ pip install mkslides
     -   Hosted slides on webserver
     -   Slides generated automatically by CI/CD using Markdown files in GitHub/GitLab repo
         -   That's exactly what is happening [here](https://github.com/MartenBE/mkslides/blob/main/.github/workflows/publish.yml)!
+
+---
+
+## CLI
+
+-   Generate the static HTML files
+
+    -   from a directory:
+
+        ```bash
+        mkslides build docs/
+        ```
+
+    -   Or from just a file
+
+        ```bash
+        mkslides build docs/slides.md
+        ```
+
+---
+
+## CLI
+
+-   Live preview:
+
+    -   from a directory:
+
+        ```bash
+        mkslides serve docs/
+        ```
+
+    -   Or from just a file
+
+        ```bash
+        mkslides serve docs/slides.md
+        ```
 
 ---
 
@@ -79,53 +116,6 @@ $ pip install mkslides
 
 <iframe width="1280" height="720" src="https://www.youtube.com/embed/D9RSATHFf7U?si=Jr7Nj5Y8vaDzU_R6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
----
-
-## Build
-
--   Generate the static HTML files:
-
-```console
-$ mkslides build -h
-Usage: mkslides build [OPTIONS] FILENAME|PATH
-
-  Build the MkDocs documentation.
-
-  FILENAME|PATH is the path to the Markdown file, or the directory containing Markdown files.
-
-Options:
-  -f, --config-file FILENAME  Provide a specific MkSlides config file.
-  -d, --site-dir PATH         The directory to output the result of the slides build.
-  -h, --help                  Show this message and exit.
-```
-
----
-
-## Serve
-
--   Live preview:
-
-```console
-$ mkslides serve -h
-Usage: mkslides serve [OPTIONS] FILENAME|PATH
-
-  Run the builtin development server.
-
-  FILENAME|PATH is the path to the Markdown file, or the directory containing Markdown files.
-
-Options:
-  -a, --dev-addr <IP:PORT>    IP address and port to serve slides locally.
-  -o, --open                  Open the website in a Web browser after the initial build finishes.
-  --watch-index-theme         Include the index theme in list of files to watch for live reloading.
-  --watch-index-template      Include the index template in list of files to watch for live reloading.
-  --watch-slides-theme        Include the slides theme in list of files to watch for live reloading.
-  --watch-slides-template     Include the slides template in list of files to watch for live reloading.
-  -f, --config-file FILENAME  Provide a specific MkSlides config file.
-  -h, --help                  Show this message and exit.
-```
-
----
-
 ## Contributions
 
 -   MkSlides is and always will be open source
@@ -140,8 +130,8 @@ Options:
 ## Example
 
 -   This slideshow
--   [Slides](https://hogenttin.github.io/hogent-revealmd/) with all possibilities using Reveal.js using the [HOGENT](https://hogent.be/) theme.
+-   [Slides](https://hogenttin.github.io/hogent-markdown-slides/) with all possibilities using Reveal.js using the [HOGENT](https://hogent.be/) theme.
     -   Also includes a lot of advanced examples such as [Mermaid.js](https://mermaid.js.org/) and [PlantUML](https://plantuml.com/) support, multicolumn slides, CI/CD, ... .
-    -   Markdown can be found [here](https://github.com/HoGentTIN/hogent-revealmd).
+    -   Markdown can be found [here](https://github.com/HoGentTIN/hogent-markdown-slides).
 
 ---

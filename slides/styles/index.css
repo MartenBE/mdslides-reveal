@@ -1,0 +1,46 @@
+body {
+    background-color: #282a36;
+    color: #f8f8f2;
+    font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
+        segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto,
+        arial, sans-serif;
+    font-size: 2em;
+    margin: 1em;
+    padding: 0;
+}
+
+h1 {
+    color: #bd93f9;
+    font-family: League Gothic, Impact, sans-serif;
+    font-weight: normal;
+}
+
+a {
+    color: #ff79c6;
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+a:hover {
+    color: #8be9fd;
+}
+
+code {
+    font-family: Fira Code, Menlo, Consolas, Monaco, Liberation Mono,
+        Lucida Console, monospace;
+}
+
+code {
+    color: #50fa7b;
+}
+
+ul li::marker,
+ol li::marker {
+    color: #8be9fd;
+}
+
+::selection {
+    color: #ffffff;
+    background: #44475a;
+    text-shadow: none;
+}
